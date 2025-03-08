@@ -11,15 +11,19 @@
   "dependencies": {
     "date-fns": "^4.1.0",
     "next": "15.2.1",
+    "next-themes": "^0.4.4",
+    "postcss": "^8.5.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.0.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "tailwindcss": "^4",
+    "autoprefixer": "^10.4.20",
+    "tailwindcss": "^4.0.12",
     "typescript": "^5"
   }
 }
