@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
-@custom-variant dark (.dark &);
-/* 
- * The @theme directive is a Tailwind CSS v4 feature
- * Cursor/VS Code might show a linting error, but it's safe to ignore
- * This is valid CSS for Tailwind CSS v4
- */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* page colors */
+  --page-background: #ffffff;
+}
+
+@layer theme {
+  .dark {
+    --page-background: #171819;
+  }
+}

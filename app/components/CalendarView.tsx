@@ -107,7 +107,7 @@ const scheduleItems: ScheduleItemProps[] = [
 
 const CalendarView: React.FC = () => {
   return (
-    <div className="h-full flex flex-col p-6 ">
+    <div className="h-full flex flex-col p-6 bg-page-background">
       <div className="flex-none mb-6">
         <CalendarHeader
           date="Monday, October 6"
