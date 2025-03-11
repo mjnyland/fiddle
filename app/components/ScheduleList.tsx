@@ -9,9 +9,9 @@ type ScheduleListProps = {
 
 const ScheduleList: React.FC<ScheduleListProps> = ({ items, title, date }) => {
   return (
-    <div className="bg-surfaceBlue rounded-lg border border-gray-200 overflow-hidden">
+    <div className="bg-cardBackgroundPrimary border border-cardBorderColor rounded-lg overflow-hidden">
       {(title || date) && (
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+        <div className="flex items-center justify-between p-4 border-b border-cardBorderColor">
           <div className="flex items-center">
             <span className="text-gray-500 mr-2">📅</span>
             <span className="font-medium">Schedule</span>
@@ -28,7 +28,7 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ items, title, date }) => {
           </div>
         </div>
       )}
-      <div className="divide-y divide-gray-100">
+      <div className="divide-y divide-cardBorderColor">
         {items.map((item, index) => (
           <ScheduleItem key={index} {...item} />
         ))}

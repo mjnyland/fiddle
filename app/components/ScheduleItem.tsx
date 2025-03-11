@@ -38,7 +38,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
   transportationDetails,
 }) => {
   return (
-    <div className="flex items-start py-3 px-3 border-b border-gray-100 group hover:bg-gray-50">
+    <div className="flex items-start py-3 px-3 border-b border-cardBorderColor group  hover:bg-[#fafafb] dark:hover:bg-[#1c1c1c]">
       <div className="flex items-center w-8 mr-2">
         {completed && (
           <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600">
@@ -58,7 +58,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
         )}
       </div>
 
-      <div className="w-36 text-sm text-gray-800">
+      <div className="w-36 text-sm text-cardTextColorPrimary">
         {isTransportation ? (
           <div className="flex items-center">
             {transportationDetails?.type === "car" && (
@@ -82,9 +82,13 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
       </div>
 
       <div className="flex-1">
-        <div className="font-medium text-sm text-gray-800">{title}</div>
+        <div className="font-medium text-sm text-cardTextColorPrimary">
+          {title}
+        </div>
         {description && (
-          <div className="text-xs text-gray-500 mt-0.5">{description}</div>
+          <div className="text-xs text-cardTextColorSecondary mt-0.5">
+            {description}
+          </div>
         )}
         {transportationDetails?.flightDetails && (
           <div className="text-xs text-gray-500 mt-0.5">

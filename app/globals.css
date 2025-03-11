@@ -3,12 +3,34 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* page colors */
-  --page-background: #ffffff;
+  /* page variables */
+  --color-pageBackgroundPrimary: #ffffff;
+  --color-pageBackgroundSecondary: #fafafb;
+  --color-pageHeaderFontSize: 20px;
+  --color-pageDescriptionFontSize: 13px;
+
+  /* card variables */
+  --color-cardBackgroundPrimary: #ffffff;
+  --color-cardBackgroundSecondary: #1c1c1c;
+  --color-cardTextColorPrimary: #171819;
+  --color-cardTextColorSecondary: #626a7d;
+  --color-cardBorderColor: #e3e6ed;
+  --fontSize-cardFontSizeRegular: 13px;
+  --fontSize-cardFontSizeDetail: 11px;
 }
 
 @layer theme {
   .dark {
-    --page-background: #171819;
+    --color-pageBackgroundPrimary: #171819;
+    --color-pageBackgroundSecondary: #1c1c1c;
+
+    /* card dark mode variables */
+    --color-cardBackgroundPrimary: #171819;
+    --color-cardBackgroundSecondary: #1c1c1c;
+    --color-cardTextColorPrimary: #ffffff;
+    --color-cardTextColorSecondary: #626a7d;
+    --color-cardBorderColor: #232529;
+    --fontSize-cardFontSizeRegular: 13px;
+    --fontSize-cardFontSizeDetail: 11px;
   }
 }

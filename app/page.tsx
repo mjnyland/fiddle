@@ -4,7 +4,7 @@ import CalendarView from "./components/CalendarView";
 export default function Home() {
   return (
     <MainLayout>
-      <CalendarView />
+      <CalendarView day="6" />
     </MainLayout>
   );
 }

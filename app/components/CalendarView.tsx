@@ -2,9 +2,8 @@ import React from "react";
 import CalendarHeader from "./CalendarHeader";
 import CalendarToolbar from "./CalendarToolbar";
 import ScheduleList from "./ScheduleList";
-import VenuePanel from "./VenuePanel";
-import LodgingPanel from "./LodgingPanel";
-import NotesPanel from "./NotesPanel";
+
+import CalendarRightPanel from "./CalendarRightPanel";
 import { ScheduleItemProps } from "./ScheduleItem";
 
 const scheduleItems: ScheduleItemProps[] = [
@@ -105,74 +104,96 @@ const scheduleItems: ScheduleItemProps[] = [
   },
 ];
 
-const CalendarView: React.FC = () => {
+interface CalendarViewProps {
+  day?: string;
+}
+
+const CalendarView: React.FC<CalendarViewProps> = ({ day = "6" }) => {
+  // Format the date based on the day parameter
+  const getDateDisplay = () => {
+    const dayNumber = parseInt(day, 10);
+    const date = new Date(2023, 9, dayNumber); // October (0-indexed month)
+    return new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  };
+
   return (
-    <div className="h-full flex flex-col p-6 bg-page-background">
+    <div className="h-full flex flex-col p-6 bg-pageBackgroundPrimary overflow-hidden">
       <div className="flex-none mb-6">
         <CalendarHeader
-          date="Monday, October 6"
+          date={getDateDisplay()}
           title="Show Day"
           subtitle="Kia Forum"
         />
-
-        <CalendarToolbar />
       </div>
 
-      <div className="grid grid-cols-3 gap-6 flex-1 min-h-0">
-        <div className="col-span-2 flex flex-col">
+      <div className="flex gap-6 flex-1 overflow-hidden">
+        {/* Left panel - independently scrollable */}
+        <div className="flex-1 flex flex-col overflow-hidden">
           <div className="flex-none">
-            <ScheduleList items={scheduleItems} title="6" />
+            <CalendarToolbar />
+          </div>
+          <div className="overflow-y-auto flex-1">
+            <ScheduleList items={scheduleItems} title={day} />
           </div>
         </div>
 
-        <div className="overflow-y-auto pr-2 pb-6 space-y-6">
-          <VenuePanel
-            name="Palacio de los Deportes"
-            address="Colonia Granjas México, Iztacalco, 08400 Mexico City, CDMX, Mexico"
-            capacity={74201}
-            sunset="5:47 PM"
-          />
-
-          <LodgingPanel
-            name="InterContinental Presidente"
-            address="Campos Elíseos 218, Polanco, Col. Chapultepec Polanco, Miguel Hidalgo, 11560 Ciudad de México, CDMX, Mexico"
-            breakfast={true}
-            restaurantHours="9AM - 7:30PM"
-            roomService="24 Hours"
-            amenities={["Gym", "Spa", "Pool"]}
-            checkIn={{
-              date: "1/19",
-              time: "3:00 PM",
-            }}
-            checkOut={{
-              date: "1/22",
-              time: "12:00 PM",
-            }}
-            phone="917-617-9668"
-          />
-
-          <NotesPanel
-            notes={[
-              {
-                content:
-                  "If you need your laundry done please bring 161,951.99 IDR (~10 equivalent) and we will send a runner out to have it laundered.",
-                type: "normal",
-              },
-              {
-                content:
-                  "If you need IDR there is a ATM machine at the hotel near the escalators to the tunnel to the mall or at the mall.",
-                type: "normal",
-              },
-              {
-                content: "Note",
-                type: "automation",
-              },
-              {
-                content: "Note",
-                type: "normal",
-              },
-            ]}
-          />
+        {/* Right panel - independently scrollable */}
+        <div className="overflow-hidden flex flex-col h-full w-fit max-w-[500px]">
+          <div className="overflow-y-auto">
+            <CalendarRightPanel
+              venueProps={{
+                name: "Palacio de los Deportes",
+                address:
+                  "Colonia Granjas México, Iztacalco, 08400 Mexico City, CDMX, Mexico",
+                capacity: 74201,
+                sunset: "5:47 PM",
+              }}
+              lodgingProps={{
+                name: "InterContinental Presidente",
+                address:
+                  "Campos Elíseos 218, Polanco, Col. Chapultepec Polanco, Miguel Hidalgo, 11560 Ciudad de México, CDMX, Mexico",
+                breakfast: true,
+                restaurantHours: "9AM - 7:30PM",
+                roomService: "24 Hours",
+                amenities: ["Gym", "Spa", "Pool"],
+                checkIn: {
+                  date: "1/19",
+                  time: "3:00 PM",
+                },
+                checkOut: {
+                  date: "1/22",
+                  time: "12:00 PM",
+                },
+                phone: "917-617-9668",
+              }}
+              notesProps={{
+                notes: [
+                  {
+                    content:
+                      "If you need your laundry done please bring 161,951.99 IDR (~10 equivalent) and we will send a runner out to have it laundered.",
+                    type: "normal",
+                  },
+                  {
+                    content:
+                      "If you need IDR there is a ATM machine at the hotel near the escalators to the tunnel to the mall or at the mall.",
+                    type: "normal",
+                  },
+                  {
+                    content: "Note",
+                    type: "automation",
+                  },
+                  {
+                    content: "Note",
+                    type: "normal",
+                  },
+                ],
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

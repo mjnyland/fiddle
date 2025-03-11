@@ -7,9 +7,9 @@ type MainLayoutProps = {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex h-screen bg-white overflow-hidden">
+    <div className="flex h-screen bg-page-background overflow-hidden">
       <Sidebar />
-      <div className="flex-1 h-full">{children}</div>
+      <div className="flex-1 h-full overflow-auto">{children}</div>
     </div>
   );
 };

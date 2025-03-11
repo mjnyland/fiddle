@@ -30,8 +30,8 @@ const LodgingPanel: React.FC<LodgingPanelProps> = ({
   phone,
 }) => {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
+    <div className="bg-cardBackgroundPrimary rounded-lg border border-cardBorderColor overflow-hidden">
+      <div className="flex items-center justify-between p-4 border-b border-cardBorderColor">
         <div className="flex items-center">
           <span className="font-medium">Lodging</span>
           <span className="ml-2 text-gray-500 text-sm">2</span>

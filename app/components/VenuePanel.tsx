@@ -15,8 +15,8 @@ const VenuePanel: React.FC<VenuePanelProps> = ({
   sunset,
 }) => {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
+    <div className="bg-cardBackgroundPrimary border border-cardBorderColor rounded-lg overflow-hidden">
+      <div className="flex items-center justify-between p-4 border-b border-cardBorderColor">
         <div className="flex items-center">
           <span className="font-medium">Venue</span>
           <span className="ml-2 text-gray-500 text-sm">1</span>
