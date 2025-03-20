@@ -88,6 +88,10 @@ const Sidebar: React.FC = () => {
 
       if (savedCalendarState !== null) {
         setCalendarExpanded(savedCalendarState === "true");
+      } else {
+        // Ensure calendar is expanded by default
+        setCalendarExpanded(true);
+        localStorage.setItem("calendarExpanded", "true");
       }
 
       if (savedTourState !== null) {
@@ -188,6 +192,12 @@ const Sidebar: React.FC = () => {
               label="Personnel"
               href="/personnel"
               active={isActive("/personnel")}
+            />
+            <NavItem
+              icon="🎟️"
+              label="Guest Lists"
+              href="/guest-lists"
+              active={isActive("/guest-lists")}
             />
             <NavItem
               icon="✈️"

@@ -5,9 +5,15 @@ type ScheduleListProps = {
   items: ScheduleItemProps[];
   title?: string;
   date?: string;
+  newEventIds?: string[];
 };
 
-const ScheduleList: React.FC<ScheduleListProps> = ({ items, title, date }) => {
+const ScheduleList: React.FC<ScheduleListProps> = ({
+  items,
+  title,
+  date,
+  newEventIds = [],
+}) => {
   return (
     <div className="bg-cardBackgroundPrimary border border-cardBorderColor rounded-lg overflow-hidden">
       {(title || date) && (
@@ -30,7 +36,16 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ items, title, date }) => {
       )}
       <div className="divide-y divide-cardBorderColor">
         {items.map((item, index) => (
-          <ScheduleItem key={index} {...item} />
+          <div
+            key={item.id || index}
+            className={
+              newEventIds.includes(item.id || "")
+                ? "bg-blue-50 dark:bg-blue-900/20 transition-colors duration-500"
+                : ""
+            }
+          >
+            <ScheduleItem {...item} />
+          </div>
         ))}
       </div>
     </div>

@@ -12,6 +12,7 @@ export type EventType =
   | "Managers";
 
 export type ScheduleItemProps = {
+  id?: string;
   timeStart: string;
   timeEnd?: string;
   title: string;
@@ -25,6 +26,7 @@ export type ScheduleItemProps = {
     destination?: string;
     flightDetails?: string;
   };
+  location?: string;
 };
 
 const ScheduleItem: React.FC<ScheduleItemProps> = ({
